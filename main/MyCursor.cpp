@@ -2,6 +2,7 @@
 #include <ncurses.h>
 #include "MyCursor.hpp"
 #include "Frame.hpp"
+#include "Window.hpp"
 using namespace std;
 
 MyCursor::MyCursor(double x, double y) : myX(x), myY(y)

@@ -6,9 +6,8 @@ class Frame
   public:
     double frameX;
     double frameY;
-  Frame(double frameX, double frameY);
-  double getSizeX(void);
-  double getSizeY(void);
+  Frame(double x, double y);
+  void popFrame();
 };
 
 #endif
