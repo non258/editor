@@ -1,9 +1,10 @@
 #include <random>
 #include <ncurses.h>
 #include "MyCursor.hpp" 
+#include "Frame.hpp"
 using namespace std;
 
-int terx, tery;
+double terx, tery;
 
 int main()
 {
@@ -16,9 +17,11 @@ int main()
 
   curs_set(1);
 
-  MyCursor obj(0, 0);
+  Frame fr(terx, tery);
 
-  move(0, 0);
+  MyCursor obj(1, 1);
+
+  move(1, 1);
 
   while (true)
   {

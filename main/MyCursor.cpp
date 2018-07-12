@@ -1,6 +1,7 @@
 #include <random>
 #include <ncurses.h>
 #include "MyCursor.hpp"
+#include "Frame.hpp"
 using namespace std;
 
 MyCursor::MyCursor(double x, double y) : myX(x), myY(y)
