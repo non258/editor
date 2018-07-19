@@ -5,14 +5,10 @@
 #include "Window.hpp"
 using namespace std;
 
-double terx, tery;
-
 int main()
 {
-  WINDOW *w = initscr();
 
-  getmaxyx(w, tery, terx);
-  Window win(terx, tery);
+  Window win;
   Frame fr(win.windowX, win.windowY);
 
   noecho();
@@ -20,9 +16,9 @@ int main()
 
   curs_set(1);
 
-  fr.popFrame();
+  fr.popFrame(win);
 
-  MyCursor obj(1, 1);
+  MyCursor obj(1, 1, fr);
 
   move(1, 1);
 

@@ -6,8 +6,9 @@ class Window
   public:
     double windowX;
     double windowY;
-  Window(double x, double y);
+    static double terX;
+    static double terY;
+  Window();
 };
 
 #endif
-

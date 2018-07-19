@@ -5,28 +5,57 @@
 #include "Window.hpp"
 using namespace std;
 
-MyCursor::MyCursor(double x, double y) : myX(x), myY(y)
+#define UP      1
+#define DOWN    2
+#define LEFT    3
+#define RIGHT   4
+
+
+MyCursor::MyCursor(double x, double y, Frame f) : myX(x), myY(y), frame(f)
 {
   
 }
 
-void MyCursor::curmove(double x, double y)
+bool MyCursor::checkTouchFrame(double x, double y)
 {
-  move(y, x);
-  myX = x;
-  myY = y;
+  if (frame.checkCursor(x, y))
+    return true;
+  return false;
+}
+
+void MyCursor::curmove(int udlr)
+{
+  switch(udlr)
+  {
+    case UP:     myY--;      break;
+    case DOWN:   myY++;      break;
+    case LEFT:   myX--;      break;
+    case RIGHT:  myX++;      break;
+  }
+
+ if (checkTouchFrame(myX, myY))
+ {
+  switch(udlr)
+  {
+    case UP:     myY++;      break;
+    case DOWN:   myY--;      break;
+    case LEFT:   myX++;      break;
+    case RIGHT:  myX--;      break;
+  }
+ }
+
+  move(myY, myX);
 }
 
 
 void MyCursor::mycursor(char num_move)
 {
   if (num_move == 'h')
-    this -> curmove(myX - 1, myY);
+    this -> curmove(LEFT);
   else if (num_move == 'j')
-    this -> curmove(myX, myY + 1);
+    this -> curmove(DOWN);
   else if (num_move == 'k')
-    this -> curmove(myX, myY - 1);
+    this -> curmove(UP);
   else if (num_move == 'l')
-    this -> curmove(myX + 1, myY);
+    this -> curmove(RIGHT);
 }
-

@@ -7,8 +7,9 @@ Frame::Frame(double x, double y) : frameX(x), frameY(y)
 
 }
 
-void Frame::popFrame()
+void Frame::popFrame(Window w)
 {
+  window = w;
   double x = frameX;
   double y = frameY;
 
@@ -49,4 +50,13 @@ void Frame::popFrame()
         printw("\n");
     }
   }
+}
+
+bool Frame::checkCursor(double x, double y)
+{
+  if (frameX - 1 <= x || x <= window.windowX - frameX)
+    return true;
+  if (frameY - 2 <= y || y <= window.windowY - frameY)
+    return true;
+  return false;
 }

@@ -3,7 +3,13 @@
 
 using namespace std;
 
-Window::Window(double x, double y) : windowX(x), windowY(y)
+Window::Window()
 {
-
+  WINDOW *w = initscr();
+  getmaxyx(w, terY, terX);
+  windowX = terX;
+  windowY = terY;
 }
+
+double Window::terX;
+double Window::terY;
