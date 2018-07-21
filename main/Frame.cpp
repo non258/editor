@@ -2,6 +2,11 @@
 using namespace std;
 #include "Frame.hpp"
 
+/*
+ * Frame       :Frameの縦と横の大きさを設定し、インスタンスを作成する
+ * popFrame    :指定した大きさで実際に指定したWindowにFrameを貼り付ける
+ * checkCursor :受け取ったxとyの値がFrameに衝突しているかどうかを返す
+ */
 Frame::Frame(double x, double y) : frameX(x), frameY(y)
 {
 

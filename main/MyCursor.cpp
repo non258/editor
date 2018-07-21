@@ -3,15 +3,9 @@
 #include "MyCursor.hpp"
 #include "Frame.hpp"
 #include "Window.hpp"
-using namespace std;
-
-#define UP      1
-#define DOWN    2
-#define LEFT    3
-#define RIGHT   4
 
 
-MyCursor::MyCursor(double x, double y, Frame f) : myX(x), myY(y), frame(f)
+MyCursor::MyCursor(double x, double y, Frame &f) : myX(x), myY(y), frame(f)
 {
   
 }

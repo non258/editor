@@ -3,6 +3,12 @@
 #ifndef FRAME_HEADER
 #define FRAME_HEADER
 
+/*
+ * Windowに貼り付ける枠の情報をもつ
+ * frameX :Frameのx軸の大きさの値をもつ
+ * frameY :Frameのy軸の大きさの値をもつ
+ * window :Frameを貼り付けているWindowをもつ
+ */
 class Frame
 {
   public:
