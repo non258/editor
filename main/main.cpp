@@ -1,30 +1,38 @@
 #include <random>
 #include <ncurses.h>
+#include <string>
+#include <vector>
 #include "MyCursor.hpp" 
 #include "Frame.hpp"
 #include "Window.hpp"
+#include "Editor.hpp"
 using namespace std;
 
 int main()
 {
 
   Window win;
-  Frame fr(win.windowX, win.windowY);
+  Editor edi;
+  edi.newpage();
 
-  noecho();
-  cbreak();
-
-  curs_set(1);
-
-  fr.popFrame(win);
-
-  MyCursor obj(1, 1, fr);
-
-  move(1, 1);
+  MyCursor obj(0, 0);
 
   while (true)
   {
-    obj.mycursor(getch());
+    char c = getch();
+    if (obj.isMove(c))
+      obj.mycursor(c);
+    else if (edi.isEnter(c))
+    {
+      edi.newLine(obj);
+      edi.viewText(obj);
+    }
+    else
+    {
+      edi.addChar(c, obj);
+      edi.viewText(obj);
+    }
+    obj.redraw();
 
     refresh();
   }

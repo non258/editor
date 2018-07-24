@@ -15,11 +15,15 @@ class MyCursor
   public:
     double myX;
     double myY;
-    Frame frame;
-  MyCursor(double x, double y, Frame &f);
+//    Frame frame;
+  MyCursor(double x, double y);
+//  bool checkTouchFrame(double x, double y);
+  void redraw();
   void curmove(int udlr);
   void mycursor(char num_move);
-  bool checkTouchFrame(double x, double y);
+  void inputText(char chtxt);
+  void enter(char enter);
+  bool isMove(char c);
 };
 
 #endif

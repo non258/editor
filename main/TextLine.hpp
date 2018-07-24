@@ -1,13 +1,21 @@
 #ifndef TEXTLINE_HEADER
 #define TEXTLINE_HEADER
 
+#include <random>
+#include <ncurses.h>
+#include <string>
+#include <vector>
+
 class TextLine 
 {
   public:
-    double lineX;
     double lineY;
     vector<char> st;
-  TextLine(double x, double y);
+  TextLine();
+  TextLine(vector<char> v);
+  void inputChar(int x, char c);
+  string asString();
+  pair<vector<char>, vector<char>> splitLine(int x);
 };
 
 #endif
