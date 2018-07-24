@@ -25,12 +25,12 @@ int main()
     else if (edi.isEnter(c))
     {
       edi.newLine(obj);
-      edi.viewText(obj);
+      edi.viewText();
     }
     else
     {
       edi.addChar(c, obj);
-      edi.viewText(obj);
+      edi.viewText();
     }
     obj.redraw();
 
