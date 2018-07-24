@@ -17,7 +17,7 @@ void Editor::addChar(char c, MyCursor &cur)
 
   lines[y] -> inputChar(x, c);
 
-  cur.myX++;
+  cur.curmove(RIGHT);
 }
 
 void Editor::viewText()
@@ -47,6 +47,5 @@ void Editor::newLine(MyCursor &cur)
   lines[y] = shared_ptr<TextLine>(new TextLine(split.first));
   lines.insert(lines.begin() + y + 1, shared_ptr<TextLine>(new TextLine(split.second)));
   cur.myX = 0;
-  cur.myY++;
+  cur.curmove(DOWN);
 }
-
