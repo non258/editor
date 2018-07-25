@@ -9,6 +9,7 @@
 
 #include "TextLine.hpp"
 #include "MyCursor.hpp"
+
 using namespace std;
 
 class Editor
@@ -22,6 +23,8 @@ class Editor
     void newpage();
     bool isEnter(char c);
     void newLine(MyCursor &obj);
+    int getHeight();
+    int getWidth(int y);
 };
 
 #endif

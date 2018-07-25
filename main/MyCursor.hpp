@@ -1,7 +1,7 @@
-#include "Frame.hpp"
-
 #ifndef MYCURSOR_HEADER
 #define MYCURSOR_HEADER
+
+class Editor;
 
 #define UP      1
 #define DOWN    2
@@ -20,7 +20,8 @@ class MyCursor
 //  bool checkTouchFrame(double x, double y);
   void redraw();
   void curmove(int udlr);
-  void mycursor(char num_move);
+  void curmove(int udlr, Editor &edi);
+  void mycursor(char num_move, Editor &edi);
   void inputText(char chtxt);
   void enter(char enter);
   bool isMove(char c);

@@ -1,7 +1,7 @@
 #include <ncurses.h>
 #include "MyCursor.hpp"
-#include "Frame.hpp"
 #include "Window.hpp"
+#include "Editor.hpp"
 
 
 MyCursor::MyCursor(double x, double y) : myX(x), myY(y)
@@ -28,16 +28,41 @@ void MyCursor::curmove(int udlr)
 }
 
 
-void MyCursor::mycursor(char num_move)
+void MyCursor::mycursor(char num_move, Editor &edi)
 {
   if (num_move == 4)
-    this -> curmove(LEFT);
+    this -> curmove(LEFT, edi);
   else if (num_move == 2)
-    this -> curmove(DOWN);
+    this -> curmove(DOWN, edi);
   else if (num_move == 3)
-    this -> curmove(UP);
+    this -> curmove(UP, edi);
   else if (num_move == 5)
-    this -> curmove(RIGHT);
+    this -> curmove(RIGHT, edi);
+}
+
+void MyCursor::curmove(int udlr, Editor &edi)
+{
+  switch(udlr)
+  {
+    case UP:
+      if (myY > 0)
+        myX = min((int)myX, edi.getWidth(--myY));
+      break;
+    case DOWN:
+      if (myY < edi.getHeight() - 1)
+        myX = min((int)myX, edi.getWidth(++myY));
+      break;
+    case LEFT:
+      if (myX > 0)
+        myX--;
+      break;
+    case RIGHT:
+      if (myX < edi.getWidth(myY))
+        myX++;
+      break;
+  }
+
+  move(myY, myX);
 }
 
 void MyCursor::inputText(char chtxt)

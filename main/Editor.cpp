@@ -49,3 +49,13 @@ void Editor::newLine(MyCursor &cur)
   cur.myX = 0;
   cur.curmove(DOWN);
 }
+
+int Editor::getHeight()
+{
+  return (int)lines.size();
+}
+
+int Editor::getWidth(int y)
+{
+  return (int)(lines[y] -> st.size());
+}

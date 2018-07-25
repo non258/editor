@@ -21,7 +21,7 @@ int main()
   {
     char c = getch();
     if (obj.isMove(c))
-      obj.mycursor(c);
+      obj.mycursor(c, edi);
     else if (edi.isEnter(c))
     {
       edi.newLine(obj);
