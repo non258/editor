@@ -49,16 +49,16 @@ void MyCursor::curmove(int udlr, Editor &edi)
       {
         if (myY == 0 && edi.viewY > 0)
           edi.viewY--;
-        else 
+        else if (myY > 0)
           myX = min((int)myX, edi.getWidth(--myY));
       }
       break;
     case DOWN:
       if (myY < edi.getHeight() - 1)
       {
-        if (myY == Window::terY - 1)
+        if (myY == Window::terY - 1 /* && linesの一番最後の要素の位置にいなかったら */)
           edi.viewY++;
-        else 
+        else if (myY > Window::terY)
           myX = min((int)myX, edi.getWidth(++myY));
       }
       break;
