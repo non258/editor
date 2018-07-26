@@ -20,6 +20,24 @@ void Editor::addChar(char c, MyCursor &cur)
   cur.curmove(RIGHT);
 }
 
+void Editor::eraseChar(MyCursor &cur)
+{
+  int x = (int)cur.myX, y = (int)cur.myY;
+  if (x == 0 && y == 0)
+    return;
+  if (x == 0)
+  {
+    lines.erase(lines.begin() + y);
+    cur.curmove(UP, *this);
+    cur.myX = lines[(int)cur.myY] -> st.size();
+  }
+  else
+  {
+    lines[y] -> st.erase(lines[y] -> st.begin() + x - 1);
+    cur.curmove(LEFT, *this);
+  }
+}
+
 void Editor::viewText()
 {
   string s = lines[viewY] -> asString();
@@ -40,6 +58,11 @@ bool Editor::isEnter(char c)
   return c == 10;
 }
 
+bool Editor::isBackSpace(char c)
+{
+  return c == 7;
+}
+
 void Editor::newLine(MyCursor &cur)
 {
   int x = cur.myX, y = cur.myY;
@@ -47,7 +70,7 @@ void Editor::newLine(MyCursor &cur)
   lines[y] = shared_ptr<TextLine>(new TextLine(split.first));
   lines.insert(lines.begin() + y + 1, shared_ptr<TextLine>(new TextLine(split.second)));
   cur.myX = 0;
-  cur.curmove(DOWN);
+  cur.curmove(DOWN, *this);
 }
 
 int Editor::getHeight()

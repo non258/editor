@@ -45,12 +45,22 @@ void MyCursor::curmove(int udlr, Editor &edi)
   switch(udlr)
   {
     case UP:
-      if (myY > 0)
-        myX = min((int)myX, edi.getWidth(--myY));
+      if (myY >= 0)
+      {
+        if (myY == 0 && edi.viewY > 0)
+          edi.viewY--;
+        else 
+          myX = min((int)myX, edi.getWidth(--myY));
+      }
       break;
     case DOWN:
       if (myY < edi.getHeight() - 1)
-        myX = min((int)myX, edi.getWidth(++myY));
+      {
+        if (myY == Window::terY - 1)
+          edi.viewY++;
+        else 
+          myX = min((int)myX, edi.getWidth(++myY));
+      }
       break;
     case LEFT:
       if (myX > 0)

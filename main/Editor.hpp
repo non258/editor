@@ -19,13 +19,14 @@ class Editor
   public:
     int viewY = 0;
     void addChar(char c, MyCursor &cur);
+    void eraseChar(MyCursor &cur);
     void viewText();
     void newpage();
     bool isEnter(char c);
+    bool isBackSpace(char c);
     void newLine(MyCursor &obj);
     int getHeight();
     int getWidth(int y);
 };
 
 #endif
-

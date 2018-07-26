@@ -23,15 +23,12 @@ int main()
     if (obj.isMove(c))
       obj.mycursor(c, edi);
     else if (edi.isEnter(c))
-    {
       edi.newLine(obj);
-      edi.viewText();
-    }
+    else if (edi.isBackSpace(c))
+      edi.eraseChar(obj);
     else
-    {
       edi.addChar(c, obj);
-      edi.viewText();
-    }
+    edi.viewText();
     obj.redraw();
 
     refresh();

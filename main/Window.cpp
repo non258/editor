@@ -11,6 +11,7 @@ Window::Window()
   curs_set(1);
   idlok(w, true);
   keypad(stdscr, TRUE);
+  scrollok(w, false);
 
   getmaxyx(w, terY, terX);
   windowX = terX;
